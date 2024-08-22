@@ -1,5 +1,6 @@
 package com.rd.pageindicatorview.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -49,13 +50,11 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.actionCustomize:
-                CustomizeActivity.start(this, customization);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.actionCustomize) {
+            CustomizeActivity.start(this, customization);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
 

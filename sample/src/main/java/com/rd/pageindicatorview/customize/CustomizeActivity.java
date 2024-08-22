@@ -1,5 +1,6 @@
 package com.rd.pageindicatorview.customize;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -48,18 +49,12 @@ public class CustomizeActivity extends BaseActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (parent.getId()) {
-            case R.id.spinnerAnimationType:
-                customization.setAnimationType(CustomizationConverter.getAnimationType(position));
-                break;
-
-            case R.id.spinnerOrientation:
-                customization.setOrientation(CustomizationConverter.getOrientation(position));
-                break;
-
-            case R.id.spinnerRtl:
-                customization.setRtlMode(CustomizationConverter.getRtlMode(position));
-                break;
+        if (parent.getId() == R.id.spinnerAnimationType) {
+            customization.setAnimationType(CustomizationConverter.getAnimationType(position));
+        } else if (parent.getId() == R.id.spinnerOrientation) {
+            customization.setOrientation(CustomizationConverter.getOrientation(position));
+        } else if (parent.getId() == R.id.spinnerRtl) {
+            customization.setRtlMode(CustomizationConverter.getRtlMode(position));
         }
     }
 
@@ -69,18 +64,12 @@ public class CustomizeActivity extends BaseActivity implements AdapterView.OnIte
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         int id = buttonView.getId();
-        switch (id) {
-            case R.id.switchInteractiveAnimation:
-                customization.setInteractiveAnimation(isChecked);
-                break;
-
-            case R.id.switchAutoVisibility:
-                customization.setAutoVisibility(isChecked);
-                break;
-
-            case R.id.switchFadeOnIdle:
-                customization.setFadeOnIdle(isChecked);
-                break;
+        if (id == R.id.switchInteractiveAnimation) {
+            customization.setInteractiveAnimation(isChecked);
+        } else if (id == R.id.switchAutoVisibility) {
+            customization.setAutoVisibility(isChecked);
+        } else if (id == R.id.switchFadeOnIdle) {
+            customization.setFadeOnIdle(isChecked);
         }
     }
 
